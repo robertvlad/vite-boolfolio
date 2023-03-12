@@ -1,6 +1,7 @@
 <script>
 
 import axios from 'axios';
+import PostSingleCard from './PostSingleCard.vue';
 
 export default {
     name: 'PostMain',
@@ -12,6 +13,9 @@ export default {
             currentPage: 1,
             lastPage: null
         }
+    },
+    components: {
+        PostSingleCard
     },
     methods: {
         getPosts(post_page) {
@@ -52,24 +56,7 @@ export default {
             </div>
             <div v-else class="d-flex gap-5 flex-wrap justify-content-center">
                 <div class="col-3" v-for="post in posts" :key="post.id">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <div class="card-title">
-                                <h5>{{ post.title }}</h5>
-                                <em>Type: {{ post.type.name }}</em>
-                            </div>
-                            <div>
-                                <h6>Technologies</h6>
-                                <span v-for="technology in post.technologies">
-                                    {{ technology.name }}
-                                </span>
-                            </div>
-                            <div class="card-img-top">
-                                <img class="img-fluid" :src="post.cover_image != null ? `${baseUrl}/storage/${post.cover_image}` : 'https://picsum.photos/200/300'">
-                            </div>
-                            <a href="#" class="btn btn-sm btn-success m-3">Leggi il Post</a>
-                        </div>
-                    </div>
+                    <PostSingleCard :post="post" :baseUrl="baseUrl"></PostSingleCard>
                 </div>
             </div>
             <div class="row">
