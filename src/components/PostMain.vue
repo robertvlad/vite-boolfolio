@@ -56,6 +56,13 @@ export default {
                         <div class="card-body text-center">
                             <div class="card-title">
                                 <h5>{{ post.title }}</h5>
+                                <em>Type: {{ post.type.name }}</em>
+                            </div>
+                            <div>
+                                <h6>Technologies</h6>
+                                <span v-for="technology in post.technologies">
+                                    {{ technology.name }}
+                                </span>
                             </div>
                             <div class="card-img-top">
                                 <img class="img-fluid" :src="post.cover_image != null ? `${baseUrl}/storage/${post.cover_image}` : 'https://picsum.photos/200/300'">
@@ -64,19 +71,19 @@ export default {
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-12">
-                        <nav>
-                            <ul class="pagination">
-                                <li :class="currentPage === 1 ? 'disabled' : 'page-item'">
-                                    <button class="page-link" @click="getPosts(currentPage - 1)">Prev</button>
-                                </li>
-                                <li :class="currentPage === lastPage ? 'disabled' : 'page-item'">
-                                    <button class="page-link" @click="getPosts(currentPage + 1)">Next</button>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <nav>
+                        <ul class="pagination d-flex justify-content-center my-3">
+                            <li :class="currentPage === 1 ? 'disabled' : 'page-item'">
+                                <button class="page-link" @click="getPosts(currentPage - 1)">Prev</button>
+                            </li>
+                            <li :class="currentPage === lastPage ? 'disabled' : 'page-item'">
+                                <button class="page-link" @click="getPosts(currentPage + 1)">Next</button>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </div>
