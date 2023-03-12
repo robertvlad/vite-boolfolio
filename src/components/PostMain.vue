@@ -1,5 +1,7 @@
 <script>
 
+import axios from 'axios';
+
 export default {
     name: 'PostMain',
     data() {
@@ -14,11 +16,11 @@ export default {
             this.loading = true;
             axios.get(`${this.baseUrl}/api/posts`).then((response) => {
                 if (response.data.success) {
-                    this.post = response.data.posts
+                    this.posts = response.data.posts;
                     this.loading = false;
                 }
                 else {
-
+                    //
                 }
             })
         }
@@ -36,10 +38,27 @@ export default {
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <h1 class="text-center">BoolPress</h1>
+            <h1 class="text-center p-5">BoolPress</h1>
         </div>
         <div class="col-12">
-            <h2 class="text-center">Lista dei Post</h2>
+            <div v-if="loading" class="d-flex justify-content-center my-5">
+                <div class="loader"></div>
+            </div>
+            <div v-else class="d-flex gap-5 flex-wrap justify-content-center">
+                <div class="col-3" v-for="post in posts" :key="post.id">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <div class="card-title">
+                                <h5>{{ post.title }}</h5>
+                            </div>
+                            <div class="card-img-top">
+                                <img class="img-fluid" :src="post.cover_image != null ? post.cover_image : 'https://picsum.photos/200/300'">
+                            </div>
+                            <a href="#" class="btn btn-sm btn-success m-3">Leggi il Post</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -48,5 +67,19 @@ export default {
 
 
 <style lang="scss" scoped>
+
+    .loader {
+        border: 16px solid #f3f3f3; /* Light grey */
+        border-top: 16px solid #3498db; /* Blue */
+        border-radius: 50%;
+        width: 120px;
+        height: 120px;
+        animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
     
 </style>
