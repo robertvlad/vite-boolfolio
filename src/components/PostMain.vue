@@ -52,7 +52,7 @@ export default {
                                 <h5>{{ post.title }}</h5>
                             </div>
                             <div class="card-img-top">
-                                <img class="img-fluid" :src="post.cover_image != null ? post.cover_image : 'https://picsum.photos/200/300'">
+                                <img class="img-fluid" :src="post.cover_image != null ? `${baseUrl}/${post.cover_image}` : 'https://picsum.photos/200/300'">
                             </div>
                             <a href="#" class="btn btn-sm btn-success m-3">Leggi il Post</a>
                         </div>
