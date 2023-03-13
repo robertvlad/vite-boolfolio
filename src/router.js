@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 
 import HomePage from './pages/HomePage.vue';
 import Portfolio from './pages/Portfolio.vue';
+import SinglePost from './pages/SinglePost.vue';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -17,6 +18,12 @@ const router = createRouter({
             name: 'portfolio',
             component: Portfolio,
         },
+        {
+            path: '/portfolio/:slug',
+            name: 'single-post',
+            component: SinglePost
+        }
+
     ]
 });
 
