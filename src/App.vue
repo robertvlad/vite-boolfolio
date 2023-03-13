@@ -1,9 +1,8 @@
 <script>
 
-import PostMain from './components/PostMain.vue';
 export default {
   components: {
-    PostMain
+    
   }
 }
 
@@ -12,7 +11,7 @@ export default {
 
 <template>
 
-<PostMain></PostMain>
+  <router-view></router-view>
 
 </template>
 
