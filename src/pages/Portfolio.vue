@@ -1,10 +1,10 @@
 <script>
 
 import axios from 'axios';
-import PostSingleCard from './PostSingleCard.vue';
+import PostSingleCard from '../components/PostSingleCard.vue';
 
 export default {
-    name: 'PostMain',
+    name: 'Portfolio',
     data() {
         return {
             posts: [],
@@ -48,7 +48,7 @@ export default {
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <h1 class="text-center p-5">BoolPress</h1>
+            <h1 class="text-center p-5">Lista dei Progetti</h1>
         </div>
         <div class="col-12">
             <div v-if="loading" class="d-flex justify-content-center my-5">
