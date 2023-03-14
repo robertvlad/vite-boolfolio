@@ -64,13 +64,13 @@ export default {
                 <div class="col-12">
                     <nav>
                         <ul class="pagination d-flex justify-content-center my-3">
-                            <li :class="currentPage === 1 ? 'disabled' : 'page-item'">
+                            <li :class="currentPage == 1 ? 'disabled' : 'page-item'">
                                 <button class="page-link" @click="getPosts(currentPage - 1)">Prev</button>
                             </li>
-                            <li :class="currentPage === i ? 'disabled' : 'page-item'" v-for="i in lastPage">
+                            <li :class="currentPage == i ? 'disabled' : 'page-item'" v-for="i in lastPage">
                                 <button class="page-link" @click="getPosts(i)">{{ i }}</button>
                             </li>
-                            <li :class="currentPage === lastPage ? 'disabled' : 'page-item'">
+                            <li :class="currentPage == lastPage ? 'disabled' : 'page-item'">
                                 <button class="page-link" @click="getPosts(currentPage + 1)">Next</button>
                             </li>
                         </ul>

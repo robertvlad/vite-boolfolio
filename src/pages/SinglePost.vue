@@ -38,7 +38,7 @@ export default {
                     <h2>{{ post.title }}</h2>
                 </div>
                 <div class="cover-img">
-                    <img :src="`${this.store.baseUrl}/storage/${post.cover_image}`" class="img-fluid">
+                    <img :src="post.cover_image != null ? `${store.baseUrl}/storage/${post.cover_image}` : 'https://picsum.photos/200/300'" class="img-fluid">
                 </div>
                 <div v-if="post.type.length > 0">
                     <em>Type: {{ post.type.name }}</em>
