@@ -9,13 +9,14 @@ export default {
         return {
             store,
             post: null,
+            loading: true
         }
     },
     mounted() {
-        this.store.loading = true,
+        this.loading = true,
         axios.get(`${this.store.baseUrl}/api/posts/${this.$route.params.slug}`).then((response)=>{
             this.post = response.data.post
-            this.store.loading = false
+            this.loading = false
         })
     },
     
@@ -26,7 +27,7 @@ export default {
 <template lang="">
     <div class="container">
         <div class="row">
-            <div class="col-12" v-if="store.loading">
+            <div class="col-12" v-if="loading">
                 <div class="loader"></div>
             </div>
             <div v-else class="col-12">
@@ -37,7 +38,7 @@ export default {
                     <h2>{{ post.title }}</h2>
                 </div>
                 <div class="cover-img">
-                    <img :src="`${this.store.baseUrl}${this.post.cover_image}`" class="img-fluid">
+                    <img :src="`${this.store.baseUrl}/storage/${post.cover_image}`" class="img-fluid">
                 </div>
                 <div v-if="post.type.length > 0">
                     <em>Type: {{ post.type.name }}</em>

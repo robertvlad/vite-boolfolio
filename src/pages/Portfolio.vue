@@ -11,7 +11,8 @@ export default {
             store,
             posts: [],
             currentPage: 1,
-            lastPage: null
+            lastPage: null,
+            loading: true
         }
     },
     components: {
@@ -19,7 +20,7 @@ export default {
     },
     methods: {
         getPosts(post_page) {
-            this.store.loading = true;
+            this.loading = true;
             axios.get(`${this.store.baseUrl}/api/posts`, { params: { page: post_page }}).then((response) => {
                 if (response.data.success) {
 
@@ -27,7 +28,7 @@ export default {
                     this.posts = response.data.posts.data;
                     this.currentPage = response.data.posts.current_page
                     this.lastPage = response.data.posts.last_page
-                    this.store.loading = false;
+                    this.loading = false;
                 }
                 else {
                     //
@@ -51,7 +52,7 @@ export default {
             <h1 class="text-center p-5">Lista dei Progetti</h1>
         </div>
         <div class="col-12">
-            <div v-if="store.loading" class="d-flex justify-content-center my-5">
+            <div v-if="loading" class="d-flex justify-content-center my-5">
                 <div class="loader"></div>
             </div>
             <div v-else class="d-flex gap-5 flex-wrap justify-content-center">
