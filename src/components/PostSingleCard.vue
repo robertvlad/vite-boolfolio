@@ -19,13 +19,24 @@ export default {
                 <div class="card-title">
                     <h5>{{ post.title }}</h5>
                 </div>
-                <div v-if="post.type.length > 0">
-                    <em>Type: {{ post.type.name }}</em>
+                <hr>
+                <div>
+                    <h6>Type: </h6>
+                    <span v-if="post.type">
+                        {{ type.name }}
+                    </span>
+                    <span v-else>
+                        Non presente
+                    </span>
                 </div>
-                <div v-if="post.technologies.length > 0">
-                    <h6>Technologies</h6>
-                    <span v-for="technology in post.technologies">
+                <hr>
+                <div class="my-2">
+                    <h6>Technologies:</h6>
+                    <span v-if="post.technologies.length" v-for="technology in post.technologies">
                         {{ technology.name }}
+                    </span>
+                    <span v-else>
+                        Non presente
                     </span>
                 </div>
                 <div class="card-img-top">
