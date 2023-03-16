@@ -25,7 +25,7 @@ export default {
 
 <template lang="">
     <header>
-        <nav class="navbar navbar-expand-md bg-nav">
+        <nav class="navbar navbar-expand-md bg-blue">
             <div class="container">
                 <div class="navbar-brand">
                     <h1><router-link class="unstyled-logo-h" to='/'>Boolpress</router-link></h1>
@@ -46,9 +46,6 @@ export default {
 
 
 <style lang="scss" scoped>
-    .bg-nav {
-        background-color: #68b9d2;
-    }
 
     .unstyled-logo-h {
         text-decoration: none;
